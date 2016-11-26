@@ -6,5 +6,5 @@ fi
 chown -R nobody:nobody /var/www/roundcube/config \
   && chown -R nobody:nobody /var/www/roundcube/logs \
   && chown -R nobody:nobody /var/www/roundcube/temp \
-  && supervisord --nodaemon
+  && exec s6-svscan /etc/s6
 

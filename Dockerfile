@@ -19,7 +19,7 @@ RUN apk --no-cache add \
       php5-pear \
       php5-sockets \
       php5-zip \
-      supervisor
+      s6
 RUN apk --no-cache add \
       openssl
 RUN sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/php.ini
@@ -35,8 +35,7 @@ RUN apk --force --purge --rdepends del \
       openssl
 
 ADD /entrypoint.sh /entrypoint.sh
-ADD /etc/nginx/nginx.conf /etc/nginx/nginx.conf
-ADD /etc/supervisord.conf /etc/supervisord.conf
+ADD /etc /etc
 
 RUN chmod +x /entrypoint.sh
 

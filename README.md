@@ -1,6 +1,6 @@
 # Roundcube Docker Image
 
-Docker image for [Roundcube][1] based on [Alpine][2], [Nginx][3], [PHP][4], and [Supervisor][5].
+Docker image for [Roundcube][1] based on [Alpine][2], [Nginx][3], [PHP][4], and [S6][5].
 
 ## Usage
 
@@ -18,4 +18,4 @@ docker run --publish 80:80 --volume /var/opt/roundcube:/var/www/roundcube/config
 [2]: https://github.com/gliderlabs/docker-alpine
 [3]: https://www.nginx.com/
 [4]: http://php.net/
-[5]: http://supervisord.org/
+[5]: http://skarnet.org/software/s6/
