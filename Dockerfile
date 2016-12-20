@@ -19,19 +19,19 @@ RUN apk --no-cache add \
       php5-pear \
       php5-sockets \
       php5-zip \
-      s6
-RUN apk --no-cache add \
-      openssl
-RUN sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/php.ini
-RUN wget $URL
-RUN echo $CHECKSUM "" $PKG | sha256sum -c -
-RUN tar -xvf $PKG -C /var/www
-RUN rm $PKG
-RUN mv /var/www/roundcubemail-* /var/www/roundcube
-RUN mv /var/www/roundcube/config /etc/roundcube
-RUN sed -ie 's/\$config\['\''db_dsnw'\''\] = .*/\$config\['\''db_dsnw'\''\] = '\
-\''sqlite:\/\/\/\/var\/www\/roundcube\/config\/db.sqlite\?mode=0646'\'';/g' /etc/roundcube/defaults.inc.php
-RUN apk --force --purge --rdepends del \
+      s6 \
+ && apk --no-cache add \
+      openssl \
+ && sed -ie "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/php.ini \
+ && wget $URL \
+ && echo $CHECKSUM "" $PKG | sha256sum -c - \
+ && tar -xvf $PKG -C /var/www \
+ && rm $PKG \
+ && mv /var/www/roundcubemail-* /var/www/roundcube \
+ && mv /var/www/roundcube/config /etc/roundcube \
+ && sed -ie 's/\$config\['\''db_dsnw'\''\] = .*/\$config\['\''db_dsnw'\''\] = '\
+\''sqlite:\/\/\/\/var\/www\/roundcube\/config\/db.sqlite\?mode=0646'\'';/g' /etc/roundcube/defaults.inc.php \
+ && apk --force --purge --rdepends del \
       openssl
 
 ADD /entrypoint.sh /entrypoint.sh
