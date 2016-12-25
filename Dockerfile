@@ -21,7 +21,16 @@ RUN apk --no-cache add \
       php5-sockets \
       php5-zip \
       s6 \
+ && sed -ie 's^;daemonize = yes^daemonize = no^' /etc/php5/php-fpm.conf \
  && sed -ie 's^;cgi.fix_pathinfo=1^cgi.fix_pathinfo=0^' /etc/php5/php.ini \
+ && mkdir -p /etc/s6/.s6-svscan \
+ && ln -s /bin/true /etc/s6/.s6-svscan/finish \
+ && mkdir -p /etc/s6/nginx \
+ && ln -s /bin/true /etc/s6/nginx/finish \
+ && ln -s /usr/sbin/nginx /etc/s6/nginx/run \
+ && mkdir -p /etc/s6/php-fpm \
+ && ln -s /bin/true /etc/s6/php-fpm/finish \
+ && ln -s /usr/bin/php-fpm /etc/s6/php-fpm/run \
  && wget ${URL} \
  && echo ${CHECKSUM} "" ${PKG} | sha256sum -c - \
  && tar -xvf ${PKG} -C /var/www \
@@ -33,8 +42,7 @@ RUN apk --no-cache add \
  && apk --force --purge --rdepends del \
       openssl
 
-ADD /entrypoint.sh /entrypoint.sh
-ADD /etc /etc
+COPY root /
 
 RUN chmod +x /entrypoint.sh
 
