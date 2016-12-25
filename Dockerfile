@@ -23,7 +23,7 @@ RUN apk --no-cache add \
       s6 \
  && sed -ie 's^;cgi.fix_pathinfo=1^cgi.fix_pathinfo=0^' /etc/php5/php.ini \
  && wget ${URL} \
- && echo ${CHECKSUM} ${PKG} | sha256sum -c - \
+ && echo ${CHECKSUM} "" ${PKG} | sha256sum -c - \
  && tar -xvf ${PKG} -C /var/www \
  && rm ${PKG} \
  && mv /var/www/roundcubemail-* /var/www/roundcube \
