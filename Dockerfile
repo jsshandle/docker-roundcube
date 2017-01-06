@@ -1,5 +1,5 @@
-FROM alpine:3.4
-MAINTAINER Johannes Schramm <js@jss.de>
+FROM alpine:3.5
+MAINTAINER Johannes Schramm <handle@jss.de>
 
 ENV VERSION 1.2.3
 ENV CHECKSUM d7f1d041557639c442691a1e5fa791ab77aa97327a0d328a22e0220f3cb2ca97
