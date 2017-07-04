@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.6
 MAINTAINER Johannes Schramm <handle@jss.de>
 
 ENV VERSION 1.3.0
