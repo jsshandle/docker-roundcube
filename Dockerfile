@@ -1,8 +1,8 @@
 FROM alpine:3.5
 MAINTAINER Johannes Schramm <handle@jss.de>
 
-ENV VERSION 1.2.5
-ENV CHECKSUM 5494f0a29ff1bc8542c6efc70fa3c35bba6229aebb9cd0d086fd552cb10bf4f3
+ENV VERSION 1.3.0
+ENV CHECKSUM a9c4d084716482171b23216d57ad9dafd85bd34f1eee73824c62327fc22b995a
 
 ENV PKG roundcubemail-${VERSION}-complete.tar.gz
 ENV URL https://github.com/roundcube/roundcubemail/releases/download/${VERSION}/${PKG}
