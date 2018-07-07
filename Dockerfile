@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.8
 MAINTAINER Johannes Schramm <handle@jss.de>
 
 ENV VERSION 1.3.1
@@ -30,7 +30,7 @@ RUN apk --no-cache add \
  && ln -s /usr/sbin/nginx /etc/s6/nginx/run \
  && mkdir -p /etc/s6/php-fpm \
  && ln -s /bin/true /etc/s6/php-fpm/finish \
- && ln -s /usr/bin/php-fpm /etc/s6/php-fpm/run \
+ && ln -s /usr/bin/php-fpm5 /etc/s6/php-fpm/run \
  && wget ${URL} \
  && echo ${CHECKSUM} "" ${PKG} | sha256sum -c - \
  && tar -xvf ${PKG} -C /var/www \
