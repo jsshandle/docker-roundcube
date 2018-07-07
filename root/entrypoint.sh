@@ -7,4 +7,3 @@ chown -R nobody:nobody /var/www/roundcube/config \
   && chown -R nobody:nobody /var/www/roundcube/logs \
   && chown -R nobody:nobody /var/www/roundcube/temp \
   && exec s6-svscan /etc/s6
-

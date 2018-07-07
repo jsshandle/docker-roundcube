@@ -44,8 +44,6 @@ RUN apk --no-cache add \
 
 COPY root /
 
-RUN chmod +x /entrypoint.sh
-
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 80
